@@ -18,15 +18,15 @@ function gotResult(error,results){
  console.error(error);
 }
 else{
-  if((result[0].confidence>0.5) && (previous_result != result[0].label)){
+  if((results[0].confidence>0.5) && (previous_result != results[0].label)){
 console.log(results);
-previous_result=result[0].label;
+previous_result=results[0].label;
 var synth=window.speechSynthesis;
-speak_data="Object detected is"+result[0].label;
+speak_data="Object detected is"+results[0].label;
 var utter_this=new SpeechSynthesisUtterance(speak_data);
 synth.speak(utter_this);
-document.getElementById("result_object_name").innerHTML=result[0].label;
-document.getElementById("result_object_accuracy").innerHTML=result[0].confidence.toFixed(3);
+document.getElementById("result_object_name").innerHTML=results[0].label;
+document.getElementById("result_object_accuracy").innerHTML=results[0].confidence.toFixed(3);
 }
 }
 }
